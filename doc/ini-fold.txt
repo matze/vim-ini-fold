@@ -1,0 +1,40 @@
+*ini-fold.txt* Folds for ini-like files
+
+Author: Matthias Vogelgesang <github.com/matze>
+License: MIT (see |ini-fold-license|)
+
+===============================================================================
+Contents                                                   *ini-fold-contents*
+
+    1. Usage..................................|ini-fold-usage|
+    2. Options................................|ini-fold-options|
+    3. License................................|ini-fold-license|
+    4. Changelog..............................|ini-fold-changelog|
+
+===============================================================================
+1. Usage                                                      *ini-fold-usage*
+
+The ini-fold plugin provides a |foldexpr| function using regular expressions to
+fold ini-like files. When enabled it will fold sections marked with [foo].
+
+===============================================================================
+2. Options                                                  *ini-fold-options*
+
+                                              *'g:ini_fold_enabled_filetypes'*
+A dictionary to enable folding for specific filetypes, e.g.: >
+    let g:ini_fold_enabled_filetypes['gitconfig'] = 1
+    let g:ini_fold_enabled_filetypes['dosinit'] = 1
+<
+===============================================================================
+3. License                                                  *ini-fold-license*
+
+This plugin is copyright by Matthias Vogelgesang and licensed under the MIT
+license.
+
+===============================================================================
+3. Changelog                                              *ini-fold-changelog*
+
+v1.0
+    * unreleased
+
+vim:ft=help:
