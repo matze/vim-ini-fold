@@ -2,10 +2,10 @@ if exists('b:did_ftplugin') | finish | endif
 let b:did_ftplugin = 1
 
 if g:ini_fold_enabled_filetypes['gitconfig']
-    call IniFoldActivate()
+    call inifold#activate()
 endif
 
-call IniFoldUndo()
+call inifold#undo()
 
 " modeline {{{1
 " vim: expandtab tabstop=4 softtabstop=4 shiftwidth=4
