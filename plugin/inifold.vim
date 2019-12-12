@@ -4,17 +4,22 @@
 " Author: Matthias Vogelgesang <github.com/matze>
 "
 " =============================================================================
-"
-"{{{ Globals
+
+if v:version < 700 | finish | endif
+
 if !exists('g:ini_fold_enabled_filetypes')
-    let g:ini_fold_enabled_filetypes = {'gitconfig': 1, 'dosini': 1}
+    let g:ini_fold_enabled_filetypes = {
+                \ 'gitconfig': 1,
+                \ 'dosini':    1,
+                \ 'config':    1,
+                \ 'desktop':   1,
+                \ }
 endif
-"}}}
-"{{{ Functions
-function! IniFold(lnum)
+
+function! IniFoldExpr(lnum)
     let line = getline(a:lnum)
 
-    if line =~ '^\s*\[[^]]*\]'
+    if line =~# '^\s*\[[^]]*\]'
         return '>1'
     endif
 
@@ -23,14 +28,17 @@ endfunction
 
 function! IniFoldActivate()
     setlocal foldmethod=expr
-    setlocal foldexpr=IniFold(v:lnum)
+    setlocal foldexpr=IniFoldExpr(v:lnum)
 endfunction
 
 function! IniFoldUndo()
     if exists('b:undo_ftplugin')
-      let b:undo_ftplugin .= "|setl foldexpr< foldmethod<"
+        let b:undo_ftplugin .= '|setl foldexpr< foldmethod<'
     else
-      let b:undo_ftplugin = "setl foldexpr< foldmethod<"
+        let b:undo_ftplugin = 'setl foldexpr< foldmethod<'
     endif
 endfunction
-"}}}
+
+" modeline {{{1
+" vim: expandtab tabstop=4 softtabstop=4 shiftwidth=4
+" vim: foldmethod=marker
